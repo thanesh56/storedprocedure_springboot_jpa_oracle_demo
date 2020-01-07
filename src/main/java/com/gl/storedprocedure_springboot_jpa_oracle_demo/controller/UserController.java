@@ -23,22 +23,26 @@ public class UserController {
 
         log.info("getAllUsers called");
         Iterable<User> users = userDao.getAllUsers();
-        log.info("userDao called");
         List<User> target = new ArrayList<>();
         users.forEach(target::add);
         return ResponseEntity.ok(target);
 
     }
 
-    @GetMapping(path = "/users/{id}")
-    public ResponseEntity<?> getNameById(@PathVariable(required = true) Integer id){
+    @GetMapping(path = "/users/name/{id}")
+    public ResponseEntity<String> getNameById(@PathVariable(required = true) Integer id){
         return ResponseEntity.ok(userDao.getNameById(id));
     }
 
-    /*@GetMapping(path = "/users/{id}")
+    @GetMapping(path = "/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable(required = true) Integer id){
         return ResponseEntity.ok(userDao.getUserById(id));
-    }*/
+    }
+
+    @PostMapping(path = "/users")
+    public ResponseEntity<User> saveUser(@RequestBody(required = true)User user ){
+        return ResponseEntity.ok(userDao.saveUser(user));
+    }
 
 
 

@@ -16,7 +16,7 @@ import java.util.List;
 
     @Procedure("getNameById")
     Object getNameById(@Param("user_id")Integer userId);*/
-public interface UserRepository extends CrudRepository<User, Long>, UserRepositoryCustom {
+public interface UserRepository extends CrudRepository<User, Integer>, UserRepositoryCustom {
 
 
 }

@@ -9,4 +9,5 @@ public interface UserRepositoryCustom {
     List<User> getAllUsers();
     String getNameById(Integer userId);
     User getUserById(Integer userId);
+    Integer saveUser(User user);
 }

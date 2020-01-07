@@ -19,8 +19,9 @@ import java.io.Serializable;
         ),
         @NamedStoredProcedureQuery(name = "getUserById",
                 procedureName = "get_user_by_id",
-                parameters =
-                @StoredProcedureParameter(mode = ParameterMode.IN, name = "user_id", type = Integer.class),
+                parameters = @StoredProcedureParameter(
+                        mode = ParameterMode.IN, name = "user_id", type = Integer.class
+                ),
                 resultClasses = User.class
 
 
@@ -32,6 +33,18 @@ import java.io.Serializable;
                         @StoredProcedureParameter(name="user_id", mode =ParameterMode.IN,type = Integer.class),
                         @StoredProcedureParameter(name="user_name", mode = ParameterMode.OUT,type = String.class)
                 }
+
+        ),
+        @NamedStoredProcedureQuery(
+                name = "saveUser",
+                procedureName = "save_user",
+                parameters = {
+                        @StoredProcedureParameter(name="user_id", mode =ParameterMode.INOUT,type = Integer.class),
+                        @StoredProcedureParameter(name="user_name", mode = ParameterMode.INOUT,type = String.class),
+                        @StoredProcedureParameter(name="user_email", mode = ParameterMode.INOUT,type = String.class),
+                        @StoredProcedureParameter(name="user_phone", mode = ParameterMode.INOUT,type = String.class)
+                }
+
 
         )
 })
