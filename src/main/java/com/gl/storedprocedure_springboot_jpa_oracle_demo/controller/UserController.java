@@ -30,15 +30,15 @@ public class UserController {
 
     }
 
-   /* @GetMapping(path = "/users/{id}")
+    @GetMapping(path = "/users/{id}")
     public ResponseEntity<?> getNameById(@PathVariable(required = true) Integer id){
         return ResponseEntity.ok(userDao.getNameById(id));
-    }*/
+    }
 
-    @GetMapping(path = "/users/{id}")
+    /*@GetMapping(path = "/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable(required = true) Integer id){
         return ResponseEntity.ok(userDao.getUserById(id));
-    }
+    }*/
 
 
 

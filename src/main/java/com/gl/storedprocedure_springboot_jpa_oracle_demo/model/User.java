@@ -11,6 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
+@Table(name = "users")
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "getAllUsers",
                 procedureName = "get_all_users",
@@ -26,7 +27,7 @@ import java.io.Serializable;
         ),
         @NamedStoredProcedureQuery(
                 name = "getNameById",
-                procedureName = "get_name_by_id",
+                procedureName = "GET_NAME_BY_ID",
                 parameters = {
                         @StoredProcedureParameter(name="user_id", mode =ParameterMode.IN,type = Integer.class),
                         @StoredProcedureParameter(name="user_name", mode = ParameterMode.OUT,type = String.class)

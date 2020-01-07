@@ -5,6 +5,7 @@ import com.gl.storedprocedure_springboot_jpa_oracle_demo.repository.UserReposito
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 import java.util.List;
@@ -28,10 +29,28 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
     @Override
     public String getNameById(Integer userId) {
-        StoredProcedureQuery findNameById =
-                entityManager.createNamedStoredProcedureQuery("getNameById")
-                        .setParameter("user_id",userId);
-        return (String)findNameById.getOutputParameterValue("user_name");
+//        StoredProcedureQuery findNameById =
+//                entityManager.createNamedStoredProcedureQuery("getNameById")
+//                        .setParameter("user_id",userId);
+//        return (String)findNameById.getOutputParameterValue("user_name");
+
+        StoredProcedureQuery query = entityManager
+                .createStoredProcedureQuery("get_name_by_id")
+                .registerStoredProcedureParameter(
+                        1,
+                        Integer.class,
+                        ParameterMode.IN
+                )
+                .registerStoredProcedureParameter(
+                        2,
+                        String.class,
+                        ParameterMode.OUT
+                )
+                .setParameter(1,userId);
+
+        query.execute();
+
+        return  (String) query.getOutputParameterValue(2);
     }
 
     @Override
