@@ -81,7 +81,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
                             .setParameter("user_email", user.getEmail())
                             .setParameter("user_phone", user.getPhone());
 
-            System.out.println(addUser.getOutputParameterValue("user_id"));
+            //System.out.println(addUser.getOutputParameterValue("user_id"));
             return (Integer) addUser.getOutputParameterValue("user_id");
             //return  addUser.getOutputParameterValue("user_id");
 
